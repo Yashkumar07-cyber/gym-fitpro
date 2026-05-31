@@ -174,7 +174,7 @@ All in one sleek, beautiful interface.
 
 > Send feedback, questions, or suggestions directly from the app.
 
-![Contact](https://raw.githubusercontent.com/Yashkumar07-cyber/gym-fitpro/main/contact_us.png)
+![Contact](https://raw.githubusercontent.com/Yashkumar07-cyber/gym-fitpro/main/contactus.png)
 
 <br/>
 
