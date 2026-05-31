@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FitGuide Pro – Your ultimate fitness companion. BMI calculator, calorie tracker, workout plans, diet guides and progress tracker." />
+  <meta name="keywords" content="fitness, workout, BMI calculator, diet, calorie calculator, gym" />
+  <title>FitGuide Pro – Train Smarter. Live Better.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="FitGuide Pro home">
+        <span class="logo-icon">⚡</span>FitGuide <span class="accent">Pro</span>
+      </a>
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#bmi" class="nav-link">BMI</a></li>
+        <li><a href="#calories" class="nav-link">Calories</a></li>
+        <li><a href="#diet" class="nav-link">Diet</a></li>
+        <li><a href="#exercises" class="nav-link">Exercises</a></li>
+        <li><a href="#workouts" class="nav-link">Workouts</a></li>
+        <li><a href="#home-workout" class="nav-link">Home Workout</a></li>
+        <li><a href="#water" class="nav-link">Water</a></li>
+        <li><a href="#tips" class="nav-link">Tips</a></li>
+        <li><a href="#tracker" class="nav-link">Tracker</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="hero" aria-label="Hero section">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-particles" id="particles" aria-hidden="true"></div>
+    <div class="hero-content reveal">
+      <div class="hero-badge">🏆 #1 Fitness Platform</div>
+      <h1 class="hero-heading">
+        Train <span class="accent-glow">Smarter.</span><br />
+        Live <span class="accent-glow">Better.</span>
+      </h1>
+      <p class="hero-sub">Your all-in-one fitness companion. Calculate BMI, plan workouts, track calories, and crush your goals — no gym required.</p>
+      <div class="hero-cta-group">
+        <a href="#bmi" class="btn-primary">Start Your Journey</a>
+        <a href="#workouts" class="btn-ghost">View Workout Plans</a>
+      </div>
+      <div class="hero-stats" aria-label="Platform statistics">
+        <div class="stat-item">
+          <span class="stat-num" data-target="50000">0</span><span>+</span>
+          <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="200">0</span><span>+</span>
+          <span class="stat-label">Exercises</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="15">0</span><span>+</span>
+          <span class="stat-label">Workout Plans</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-ring ring-1"></div>
+      <div class="hero-ring ring-2"></div>
+      <div class="hero-ring ring-3"></div>
+      <div class="hero-icon-center">💪</div>
+    </div>
+  </section>
+
+  <!-- ═══════════ BMI CALCULATOR ═══════════ -->
+  <section class="section" id="bmi" aria-labelledby="bmi-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">HEALTH METRICS</span>
+        <h2 id="bmi-heading">BMI <span class="accent">Calculator</span></h2>
+        <p>Find out your body mass index and what it means for your health.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="glass-card reveal">
+          <h3 class="card-title">📏 Your Measurements</h3>
+          <div class="form-group">
+            <label for="bmi-height">Height (cm)</label>
+            <input type="number" id="bmi-height" placeholder="e.g. 175" min="100" max="250" aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label for="bmi-weight">Weight (kg)</label>
+            <input type="number" id="bmi-weight" placeholder="e.g. 70" min="30" max="300" aria-required="true" />
+          </div>
+          <button class="btn-primary full-w" onclick="calculateBMI()" aria-label="Calculate BMI">Calculate BMI</button>
+        </div>
+        <div class="glass-card result-card reveal" id="bmi-result" aria-live="polite">
+          <div class="result-placeholder">
+            <div class="placeholder-icon">📊</div>
+            <p>Enter your measurements to see your BMI result</p>
+          </div>
+        </div>
+      </div>
+      <div class="bmi-scale reveal" aria-label="BMI scale reference">
+        <div class="bmi-range" style="--c:#3b82f6">
+          <span class="range-label">Underweight</span>
+          <span class="range-val">&lt; 18.5</span>
+        </div>
+        <div class="bmi-range" style="--c:#22c55e">
+          <span class="range-label">Normal</span>
+          <span class="range-val">18.5 – 24.9</span>
+        </div>
+        <div class="bmi-range" style="--c:#f59e0b">
+          <span class="range-label">Overweight</span>
+          <span class="range-val">25 – 29.9</span>
+        </div>
+        <div class="bmi-range" style="--c:#ef4444">
+          <span class="range-label">Obese</span>
+          <span class="range-val">≥ 30</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CALORIE CALCULATOR ═══════════ -->
+  <section class="section section-alt" id="calories" aria-labelledby="cal-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">NUTRITION</span>
+        <h2 id="cal-heading">Daily <span class="accent">Calorie</span> Calculator</h2>
+        <p>Know exactly how many calories your body needs every day.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="glass-card reveal">
+          <h3 class="card-title">⚙️ Your Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cal-age">Age</label>
+              <input type="number" id="cal-age" placeholder="25" min="10" max="100" />
+            </div>
+            <div class="form-group">
+              <label for="cal-gender">Gender</label>
+              <select id="cal-gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cal-height">Height (cm)</label>
+              <input type="number" id="cal-height" placeholder="175" min="100" max="250" />
+            </div>
+            <div class="form-group">
+              <label for="cal-weight">Weight (kg)</label>
+              <input type="number" id="cal-weight" placeholder="70" min="30" max="300" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cal-activity">Activity Level</label>
+            <select id="cal-activity">
+              <option value="1.2">Sedentary (little/no exercise)</option>
+              <option value="1.375">Lightly active (1–3 days/week)</option>
+              <option value="1.55">Moderately active (3–5 days/week)</option>
+              <option value="1.725">Very active (6–7 days/week)</option>
+              <option value="1.9">Extra active (physical job)</option>
+            </select>
+          </div>
+          <button class="btn-primary full-w" onclick="calculateCalories()" aria-label="Calculate daily calories">Calculate Calories</button>
+        </div>
+        <div class="glass-card result-card reveal" id="cal-result" aria-live="polite">
+          <div class="result-placeholder">
+            <div class="placeholder-icon">🔥</div>
+            <p>Fill in your details to get your personalised calorie targets</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ DIET RECOMMENDATIONS ═══════════ -->
+  <section class="section" id="diet" aria-labelledby="diet-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">NUTRITION PLANS</span>
+        <h2 id="diet-heading">Diet <span class="accent">Recommendations</span></h2>
+        <p>Personalised meal plans based on your fitness goal.</p>
+      </div>
+      <div class="diet-tabs reveal" role="tablist" aria-label="Diet plan tabs">
+        <button class="tab-btn active" onclick="showDiet('loss')" role="tab" aria-selected="true" aria-controls="diet-loss">⬇ Weight Loss</button>
+        <button class="tab-btn" onclick="showDiet('maintain')" role="tab" aria-selected="false" aria-controls="diet-maintain">⚖ Maintenance</button>
+        <button class="tab-btn" onclick="showDiet('gain')" role="tab" aria-selected="false" aria-controls="diet-gain">⬆ Weight Gain</button>
+      </div>
+      <div id="diet-content" class="diet-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ EXERCISE LIBRARY ═══════════ -->
+  <section class="section section-alt" id="exercises" aria-labelledby="ex-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">EXERCISE LIBRARY</span>
+        <h2 id="ex-heading">Exercise <span class="accent">Library</span></h2>
+        <p>Browse 40+ exercises organised by muscle group.</p>
+      </div>
+      <div class="muscle-filters reveal" role="group" aria-label="Filter exercises by muscle group">
+        <button class="filter-btn active" onclick="filterExercises('all')" aria-pressed="true">All</button>
+        <button class="filter-btn" onclick="filterExercises('chest')" aria-pressed="false">Chest</button>
+        <button class="filter-btn" onclick="filterExercises('back')" aria-pressed="false">Back</button>
+        <button class="filter-btn" onclick="filterExercises('shoulders')" aria-pressed="false">Shoulders</button>
+        <button class="filter-btn" onclick="filterExercises('biceps')" aria-pressed="false">Biceps</button>
+        <button class="filter-btn" onclick="filterExercises('triceps')" aria-pressed="false">Triceps</button>
+        <button class="filter-btn" onclick="filterExercises('legs')" aria-pressed="false">Legs</button>
+        <button class="filter-btn" onclick="filterExercises('abs')" aria-pressed="false">Abs</button>
+      </div>
+      <div class="exercise-grid" id="exercise-grid" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WORKOUT PLANS ═══════════ -->
+  <section class="section" id="workouts" aria-labelledby="wp-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">TRAINING PROGRAMS</span>
+        <h2 id="wp-heading">Workout <span class="accent">Plans</span></h2>
+        <p>Structured programs for every fitness level.</p>
+      </div>
+      <div class="plan-tabs reveal" role="tablist" aria-label="Workout plan tabs">
+        <button class="tab-btn active" onclick="showPlan('beginner')" role="tab">🌱 Beginner</button>
+        <button class="tab-btn" onclick="showPlan('intermediate')" role="tab">💪 Intermediate</button>
+        <button class="tab-btn" onclick="showPlan('advanced')" role="tab">🔥 Advanced</button>
+      </div>
+      <div id="plan-content" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ HOME WORKOUT PLAN ═══════════ -->
+  <section class="section home-workout-section" id="home-workout" aria-labelledby="hw-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">NO GYM NEEDED</span>
+        <h2 id="hw-heading">Home <span class="accent">Workout Plan</span></h2>
+        <p>Gym nahi ja sakte? Koi baat nahi! Ghar par hi world-class results pao.</p>
+      </div>
+
+      <div class="hw-intro reveal">
+        <div class="hw-intro-icon">🏠</div>
+        <div>
+          <h3>Ghar Par Workout Kyun Kare?</h3>
+          <p>Research proves kartha hai ki bodyweight training utna hi effective hai jitna gym training — agar sahi technique aur progressive overload use karo. Sirf ek yoga mat chahiye, baaki sab aap ke body weight se hoga. Beginners se lekar advanced tak, neeche har level ke liye complete guide hai.</p>
+        </div>
+      </div>
+
+      <div class="hw-level-tabs reveal" role="tablist">
+        <button class="tab-btn active" onclick="showHomeWorkout('beginner')" role="tab">🌱 Beginner</button>
+        <button class="tab-btn" onclick="showHomeWorkout('intermediate')" role="tab">💪 Intermediate</button>
+        <button class="tab-btn" onclick="showHomeWorkout('advanced')" role="tab">🔥 Advanced</button>
+      </div>
+
+      <div id="hw-content" class="hw-grid"></div>
+
+      <div class="hw-weekly reveal" id="hw-weekly">
+        <div class="hw-weekly-header">
+          <h3>📅 7-Day Home Workout Schedule</h3>
+          <p>Beginner ke liye — consistency sabse important hai!</p>
+        </div>
+        <div class="hw-weekly-grid" id="hw-weekly-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WATER INTAKE ═══════════ -->
+  <section class="section section-alt" id="water" aria-labelledby="water-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">HYDRATION</span>
+        <h2 id="water-heading">Water Intake <span class="accent">Calculator</span></h2>
+        <p>Stay hydrated — calculate your optimal daily water intake.</p>
+      </div>
+      <div class="calc-grid">
+        <div class="glass-card reveal">
+          <h3 class="card-title">💧 Your Weight</h3>
+          <div class="form-group">
+            <label for="water-weight">Weight (kg)</label>
+            <input type="number" id="water-weight" placeholder="e.g. 70" min="30" max="300" />
+          </div>
+          <div class="form-group">
+            <label for="water-activity">Activity Level</label>
+            <select id="water-activity">
+              <option value="low">Low (office / sedentary)</option>
+              <option value="medium">Medium (regular exercise)</option>
+              <option value="high">High (intense training)</option>
+            </select>
+          </div>
+          <button class="btn-primary full-w" onclick="calculateWater()" aria-label="Calculate water intake">Calculate</button>
+        </div>
+        <div class="glass-card result-card reveal" id="water-result" aria-live="polite">
+          <div class="result-placeholder">
+            <div class="placeholder-icon">💧</div>
+            <p>Enter your weight to get your daily water intake recommendation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FITNESS TIPS ═══════════ -->
+  <section class="section" id="tips" aria-labelledby="tips-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">PRO TIPS</span>
+        <h2 id="tips-heading">Fitness <span class="accent">Tips</span></h2>
+        <p>Evidence-based tips to maximise your results.</p>
+      </div>
+      <div class="tip-card glass-card reveal" id="daily-tip" aria-live="polite">
+        <div class="tip-content">
+          <span class="tip-badge">💡 Daily Tip</span>
+          <p id="tip-text" class="tip-text"></p>
+        </div>
+        <button class="btn-ghost" onclick="randomTip()" aria-label="Get a new fitness tip">Next Tip ↻</button>
+      </div>
+      <div class="tips-grid reveal" id="tips-grid"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROGRESS TRACKER ═══════════ -->
+  <section class="section section-alt" id="tracker" aria-labelledby="tracker-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">PROGRESS</span>
+        <h2 id="tracker-heading">Progress <span class="accent">Tracker</span></h2>
+        <p>Log your weight and notes — all saved locally in your browser.</p>
+      </div>
+      <div class="tracker-layout">
+        <div class="glass-card reveal">
+          <h3 class="card-title">📝 Log Entry</h3>
+          <div class="form-group">
+            <label for="track-date">Date</label>
+            <input type="date" id="track-date" aria-required="true" />
+          </div>
+          <div class="form-group">
+            <label for="track-weight">Weight (kg)</label>
+            <input type="number" id="track-weight" placeholder="e.g. 72.5" step="0.1" min="30" max="300" />
+          </div>
+          <div class="form-group">
+            <label for="track-notes">Notes</label>
+            <textarea id="track-notes" placeholder="How did you feel today? Any PRs?" rows="3" aria-label="Progress notes"></textarea>
+          </div>
+          <div class="btn-row">
+            <button class="btn-primary" onclick="saveProgress()" aria-label="Save progress entry">Save Entry</button>
+            <button class="btn-ghost" onclick="clearAll()" aria-label="Clear all progress data">Clear All</button>
+          </div>
+          <div id="track-msg" class="form-msg" role="alert" aria-live="assertive"></div>
+        </div>
+        <div class="glass-card reveal">
+          <h3 class="card-title">📈 Progress History</h3>
+          <div id="progress-list" class="progress-list" aria-label="Progress history" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <section class="section" id="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">GET IN TOUCH</span>
+        <h2 id="contact-heading">Contact <span class="accent">Us</span></h2>
+        <p>Have questions or feedback? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="glass-card reveal">
+          <h3 class="card-title">📬 Send a Message</h3>
+          <form id="contact-form" onsubmit="submitContact(event)" novalidate aria-label="Contact form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="c-name">Full Name</label>
+                <input type="text" id="c-name" placeholder="John Doe" required autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email</label>
+                <input type="email" id="c-email" placeholder="you@email.com" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="c-subject">Subject</label>
+              <input type="text" id="c-subject" placeholder="How can we help?" required />
+            </div>
+            <div class="form-group">
+              <label for="c-msg">Message</label>
+              <textarea id="c-msg" rows="5" placeholder="Write your message here..." required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-w" aria-label="Send message">Send Message →</button>
+            <div id="contact-msg" class="form-msg" role="alert" aria-live="assertive"></div>
+          </form>
+        </div>
+        <div class="contact-info reveal">
+          <div class="glass-card info-card">
+            <span class="info-icon" aria-hidden="true">📍</span>
+            <div>
+              <strong>Location</strong>
+              <p>chhaishgarh, India</p>
+            </div>
+          </div>
+          <div class="glass-card info-card">
+            <span class="info-icon" aria-hidden="true">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <p>hello@fitguidepro.com</p>
+            </div>
+          </div>
+          <div class="glass-card info-card">
+            <span class="info-icon" aria-hidden="true">⏰</span>
+            <div>
+              <strong>Support Hours</strong>
+              <p>Mon–Sat, 9am – 6pm IST</p>
+            </div>
+          </div>
+          <div class="glass-card info-card">
+            <span class="info-icon" aria-hidden="true">📱</span>
+            <div>
+              <strong>Follow Us</strong>
+              <p>@yaashhuu_007</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo" aria-label="FitGuide Pro">⚡ FitGuide <span class="accent">Pro</span></div>
+          <p>Train smarter. Live better. Your ultimate fitness companion for a healthier life.</p>
+        </div>
+        <div class="footer-links">
+          <strong>Quick Links</strong>
+          <ul role="list">
+            <li><a href="#bmi">BMI Calculator</a></li>
+            <li><a href="#calories">Calorie Calculator</a></li>
+            <li><a href="#diet">Diet Plans</a></li>
+            <li><a href="#exercises">Exercise Library</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <strong>Programs</strong>
+          <ul role="list">
+            <li><a href="#workouts">Beginner Plan</a></li>
+            <li><a href="#workouts">Intermediate Plan</a></li>
+            <li><a href="#workouts">Advanced Plan</a></li>
+            <li><a href="#tracker">Progress Tracker</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <strong>Resources</strong>
+          <ul role="list">
+            <li><a href="#tips">Fitness Tips</a></li>
+            <li><a href="#water">Water Calculator</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 FitGuide Pro. All rights reserved. Built with 💚 for fitness lovers.</p>
+        <p class="footer-note">Disclaimer: This tool is for informational purposes only and does not replace professional medical advice.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top" title="Back to top">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
